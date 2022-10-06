@@ -5,10 +5,11 @@ namespace Auto.Data {
 	public interface IAutoDatabase {
 		
 		public int CountVehicles();
+		public int CountOwners();
 		public IEnumerable<Vehicle> ListVehicles();
 		public IEnumerable<Manufacturer> ListManufacturers();
 		public IEnumerable<Model> ListModels();
-		public IEnumerable<Owner> ListOwner();
+		public IEnumerable<Owner> ListOwners();
 
 		public Vehicle FindVehicle(string registration);
 		public Model FindModel(string code);

@@ -11,7 +11,11 @@ public class ApiController : ControllerBase {
             message = "Welcome to the Auto API!",
             _links = new {
                 vehicles = new {
-                    href = "/api/vehicles"
+                    href = "/api/vehicles",
+                },
+                owners = new
+                {
+                    href = "/api/owners",
                 }
             }
         };

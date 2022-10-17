@@ -4,19 +4,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auto.Data;
 using Auto.Data.Entities;
+using Auto.Messages;
+using Auto.Website.Extensions;
 using Auto.Website.Models;
 using Castle.Core.Internal;
+using EasyNetQ;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace Auto.Website.Controllers.Api {
+namespace Auto.Website.Controllers.Api
+{
     [Route("api/[controller]")]
 	[ApiController]
 	public class VehiclesController : ControllerBase {
 		private readonly IAutoDatabase db;
+		private readonly IBus bus;
 
 		public VehiclesController(IAutoDatabase db) {
 			this.db = db;
+			this.bus = bus;
 		}
 
 
@@ -81,7 +87,8 @@ namespace Auto.Website.Controllers.Api {
 				VehicleModel = vehicleModel
 			};
 			db.CreateVehicle(vehicle);
-			
+			PublishNewVehicleMessage(vehicle);
+
 			return Ok(dto);
 		}
 
@@ -98,6 +105,8 @@ namespace Auto.Website.Controllers.Api {
 				ModelCode = vehicleModel.Code
 			};
 			db.UpdateVehicle(vehicle);
+			PublishNewVehicleMessage(vehicle);
+
 			return Get(id);
 		}
 
@@ -108,6 +117,13 @@ namespace Auto.Website.Controllers.Api {
 			if (vehicle == default) return NotFound();
 			db.DeleteVehicle(vehicle);
 			return NoContent();
+		}
+
+		private async Task PublishNewVehicleMessage(Vehicle vehicle)
+		{
+			var message = vehicle.ToMessage();
+
+			await bus.PubSub.PublishAsync(message);
 		}
 	}
 }

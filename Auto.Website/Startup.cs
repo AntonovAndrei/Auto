@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using Auto.Website.GraphQl.Schemas;
 using Auto.Website.GraphQl.GraphType;
 using GraphQL.Types;
+using EasyNetQ;
 
 namespace Auto.Website
 {
@@ -50,6 +51,9 @@ namespace Auto.Website
                 .AddGraphTypes(typeof(OwnerGraphType).Assembly)
 
             );
+
+            var bus = RabbitHutch.CreateBus(Configuration.GetConnectionString("AutoRabbitMQ"));
+            services.AddSingleton<IBus>(bus);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -68,15 +72,15 @@ namespace Auto.Website
             app.UseStaticFiles();
             app.UseRouting();
 
-            /*app.UseSwagger();
-            app.UseSwaggerUI(*//*c =>
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = string.Empty;
-            }*//*);*/
+            });
 
-            app.UseGraphQL<AutoSchema>();
-            app.UseGraphiQl("/graphiql");
+            //app.UseGraphQL<AutoSchema>();
+            //app.UseGraphiQl("/graphiql");
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllerRoute(

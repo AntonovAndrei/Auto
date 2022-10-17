@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auto.Data;
 using Auto.Data.Entities;
+using Auto.Website.Extensions;
 using Auto.Website.Models;
 using Castle.Core.Internal;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auto.Website.Controllers.Api
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class OwnersController : ControllerBase
 	{

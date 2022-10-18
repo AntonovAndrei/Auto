@@ -54,4 +54,17 @@ public static class HypermediaExtensions
 
         return message;
     }
+    
+    public static NewOwnerMessage ToMessage(this Owner owner)
+    {
+        var message = new NewOwnerMessage()
+        {
+            Id = owner.Id,
+            FullName = owner.FullName,
+            BirthDate = owner.BirthDate,
+            ListedAtUtc = DateTime.UtcNow
+        };
+
+        return message;
+    }
 }

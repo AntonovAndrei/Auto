@@ -7,6 +7,7 @@ using Auto.Data.Entities;
 using Auto.Website.Extensions;
 using Auto.Website.Models;
 using Castle.Core.Internal;
+using EasyNetQ;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auto.Website.Controllers.Api
@@ -16,10 +17,12 @@ namespace Auto.Website.Controllers.Api
 	public class OwnersController : ControllerBase
 	{
 		private readonly IAutoDatabase db;
+		private readonly IBus _bus;
 
-		public OwnersController(IAutoDatabase db)
+		public OwnersController(IAutoDatabase db, IBus bus)
 		{
 			this.db = db;
+			this._bus = bus;
 		}
 
 		// GET: api/owners
@@ -104,6 +107,7 @@ namespace Auto.Website.Controllers.Api
 			};
 
 			db.CreateOwner(owner);
+			
 
 			return Ok(dto);
 		}
@@ -135,6 +139,13 @@ namespace Auto.Website.Controllers.Api
 			if (owner == default) return NotFound();
 			db.DeleteOwner(owner);
 			return NoContent();
+		}
+		
+		private async Task PublishOwnerMessage(Owner owner)
+		{
+			var message = owner.ToMessage();
+
+			await _bus.PubSub.PublishAsync(message);
 		}
 	}
 }

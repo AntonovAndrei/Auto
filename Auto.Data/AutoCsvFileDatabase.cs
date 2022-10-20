@@ -134,10 +134,10 @@ namespace Auto.Data {
 
 
         public void CreateVehicle(Vehicle vehicle) {
-            //vehicle.ModelCode = vehicle.VehicleModel.Code;
-            //vehicle.VehicleModel.Vehicles.Add(vehicle);
-            //vehicle.Owner = owners.GetValueOrDefault(vehicle.OwnerId ?? -1);
-            //UpdateVehicle(vehicle);
+            vehicle.ModelCode = vehicle.VehicleModel.Code;
+            vehicle.VehicleModel.Vehicles.Add(vehicle);
+            vehicle.Owner = owners.GetValueOrDefault(vehicle.OwnerId ?? -1);
+            UpdateVehicle(vehicle);
         }
 
         public void CreateOwner(Owner owner) {

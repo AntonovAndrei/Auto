@@ -107,7 +107,7 @@ namespace Auto.Website.Controllers.Api
 			};
 
 			db.CreateOwner(owner);
-			
+			PublishOwnerMessage(owner);
 
 			return Ok(dto);
 		}
@@ -128,6 +128,8 @@ namespace Auto.Website.Controllers.Api
 				Vehicle = ownerVehicle,
 			};
 			db.UpdateOwner(owner);
+			PublishOwnerMessage(owner);
+			
 			return Get(id);
 		}
 
@@ -138,6 +140,8 @@ namespace Auto.Website.Controllers.Api
 			var owner = db.FindOwner(id);
 			if (owner == default) return NotFound();
 			db.DeleteOwner(owner);
+			
+			
 			return NoContent();
 		}
 		

@@ -18,11 +18,11 @@ namespace Auto.Website.Controllers.Api
 	[ApiController]
 	public class VehiclesController : ControllerBase {
 		private readonly IAutoDatabase db;
-		private readonly IBus bus;
+		private readonly IBus _bus;
 
-		public VehiclesController(IAutoDatabase db) {
+		public VehiclesController(IAutoDatabase db, IBus bus) {
 			this.db = db;
-			this.bus = bus;
+			this._bus = bus;
 		}
 
 
@@ -123,7 +123,7 @@ namespace Auto.Website.Controllers.Api
 		{
 			var message = vehicle.ToMessage();
 
-			await bus.PubSub.PublishAsync(message);
+			await _bus.PubSub.PublishAsync(message);
 		}
 	}
 }

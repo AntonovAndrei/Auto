@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "Auto.OwnerClient";
+import "google/protobuf/timestamp.proto";
+
+package matricula;
+
+service Matricula {
+  rpc GetMatricula (OwnerRequest) returns (OwnerReply);
+}
+
+message OwnerRequest {
+  string fullName = 1;
+  google.protobuf.Timestamp birthDate = 2;
+}
+
+message OwnerReply {
+  string vehicleNumber = 1;
+}

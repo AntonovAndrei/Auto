@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Auto.OwnercCient</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Google.Protobuf" Version="3.21.9" />
+      <PackageReference Include="Grpc.Net.Client" Version="2.50.0" />
+      <PackageReference Include="Grpc.Tools" Version="2.50.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="..\Auto.OwnerServer\Protos">
+        <Link>Protos</Link>
+      </Folder>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="..\Auto.OwnerServer\Protos\matricula.proto" GrpcServices="Client" />
+<!--        <Protobuf Include="Protos\matricula.proto">-->
+<!--          <GrpcServices>Server</GrpcServices>-->
+<!--          <Access>Public</Access>-->
+<!--          <ProtoCompile>True</ProtoCompile>-->
+<!--          <CompileOutputs>True</CompileOutputs>-->
+<!--          <OutputDir>obj\Debug\net6.0\</OutputDir>-->
+<!--          <Generator>MSBuild:Compile</Generator>-->
+<!--        </Protobuf>-->
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Auto.OwnerServer\Auto.OwnerServer.csproj" />
+    </ItemGroup>
+
+</Project>

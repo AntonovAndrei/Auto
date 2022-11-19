@@ -132,6 +132,28 @@ namespace Auto.Data {
         public Manufacturer FindManufacturer(string code) => manufacturers.GetValueOrDefault(code);
         public Owner FindOwner(int id) => owners.GetValueOrDefault(id);
 
+        public string GetVehicleNumber(Owner owner)
+        {
+            string vehicleNumber = null;
+            foreach (var o in owners)
+            {
+                if (o.Value.FullName.Equals(owner.FullName)
+                    && IsDateSame(o.Value.BirthDate, owner.BirthDate))
+                    vehicleNumber = o.Value.VehicleId;
+            }
+
+            return vehicleNumber;
+        }
+
+        private bool IsDateSame(DateTime d1, DateTime d2)
+        {
+            if (d1.Day == d2.Day
+                && d1.Month == d2.Month
+                && d1.Year == d2.Year)
+                return true;
+
+            return false;
+        }
 
         public void CreateVehicle(Vehicle vehicle) {
             //vehicle.ModelCode = vehicle.VehicleModel.Code;

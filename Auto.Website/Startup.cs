@@ -12,7 +12,6 @@ using GraphQL;
 using Microsoft.OpenApi.Models;
 using Auto.Website.GraphQl.Schemas;
 using Auto.Website.GraphQl.GraphType;
-using GraphQL.Types;
 using EasyNetQ;
 
 namespace Auto.Website
@@ -31,7 +30,7 @@ namespace Auto.Website
             services.AddRouting(options => options.LowercaseUrls = true);
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddSingleton<IAutoDatabase, AutoCsvFileDatabase>();
-
+            //services.AddSignalR();
             services.AddSwaggerGen(
                 config =>
                 {
@@ -71,6 +70,7 @@ namespace Auto.Website
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseRouting();
+            
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -78,15 +78,18 @@ namespace Auto.Website
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = string.Empty;
             });
+                //app.MapHub<AutoHub>();
+            app.UseGraphQL<AutoSchema>();
+            app.UseGraphiQl("/graphiql");
 
-            //app.UseGraphQL<AutoSchema>();
-            //app.UseGraphiQl("/graphiql");
-
-            app.UseEndpoints(endpoints => {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+             app.UseEndpoints(endpoints =>
+                 {
+                     endpoints.MapControllerRoute(
+                         name: "default",
+                         pattern: "{controller=Home}/{action=Index}/{id?}");
+                     
+                 }
+             );
         }
     }
 }

@@ -37,6 +37,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Auto.Messages\Auto.Messages.csproj" />
       <ProjectReference Include="..\Auto.OwnerServer\Auto.OwnerServer.csproj" />
     </ItemGroup>
 

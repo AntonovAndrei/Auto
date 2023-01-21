@@ -13,10 +13,6 @@ function displayNotification(user, json) {
     });
     var $target = $('div#signalr-notifications');
     var data = json;
-    var message =
-        `NEW VEHICLE! <a href="/vehicles/${data.registration}">
-        ${data.registration}</a> (${data.manufacturerName} ${data.modelName},
-        ${data.color}, ${data.year}).Price ${data.currencyCode} ${data.price}`;
     var message = `SiganlR message: ${data}`;
     var $div = $(`<div>${message}</div>`);
     $target.prepend($div);

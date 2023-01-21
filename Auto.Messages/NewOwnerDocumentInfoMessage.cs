@@ -1,16 +1,14 @@
 ﻿namespace Auto.Messages;
 
-public class NewOwnerDocumentInfoMessage: NewOwnerMessage
+public class NewOwnerMatriculaMessage: NewOwnerMessage
 {
-    public int DrivingExperienceInMonth { get; set; }
-    public DateTime DocumentReceiptDate { get; set; }
+    public int VehicleCount { get; set; }
 
-    public NewOwnerDocumentInfoMessage(NewOwnerMessage message,
-        int experienceInMonth, DateTime documentReceiptDate)
+    public NewOwnerMatriculaMessage(NewOwnerMessage message,
+        int vehicleCount)
     {
         FullName = message.FullName;
         BirthDate = message.BirthDate;
-        DrivingExperienceInMonth = experienceInMonth;
-        DocumentReceiptDate = documentReceiptDate;
+        VehicleCount = vehicleCount;
     }
 }

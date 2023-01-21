@@ -19,16 +19,7 @@ public class VehicleMatriculaService : Matricula.MatriculaBase
         ServerCallContext context)
     {
         _logger.LogInformation($"Start GetOwnerVehicle() method in OwnerVehicleService class {request.FullName} {request.BirthDate.ToDateTime()}");
-        var owner = new Data.Entities.Owner()
-        {
-            FullName = request.FullName,
-            BirthDate = request.BirthDate.ToDateTime()
-        };
-        var vehicleNumber = _db.GetVehicleNumber(owner);
-
-        if (string.IsNullOrEmpty(vehicleNumber))
-            vehicleNumber = "Not Found";
         
-        return Task.FromResult(new OwnerReply() { VehicleNumber = vehicleNumber });
+        return Task.FromResult(new OwnerReply() { VehicleNumber = "666" });
     }
 }

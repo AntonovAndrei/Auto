@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.SignalRWeb", "Auto.Sig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.SiganlRClient", "Auto.SiganlRClient\Auto.SiganlRClient.csproj", "{0D34FF1E-390C-4CA2-8AB1-E4E06C86DE2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auto.Notifier", "Auto.Notifier\Auto.Notifier.csproj", "{00CA73C8-3C02-4488-AEEA-1DE5159924A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +127,18 @@ Global
 		{0D34FF1E-390C-4CA2-8AB1-E4E06C86DE2D}.Release|x64.Build.0 = Release|Any CPU
 		{0D34FF1E-390C-4CA2-8AB1-E4E06C86DE2D}.Release|x86.ActiveCfg = Release|Any CPU
 		{0D34FF1E-390C-4CA2-8AB1-E4E06C86DE2D}.Release|x86.Build.0 = Release|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Debug|x64.Build.0 = Debug|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Debug|x86.Build.0 = Debug|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Release|x64.ActiveCfg = Release|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Release|x64.Build.0 = Release|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Release|x86.ActiveCfg = Release|Any CPU
+		{00CA73C8-3C02-4488-AEEA-1DE5159924A7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

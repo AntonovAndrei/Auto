@@ -12,7 +12,6 @@ function displayNotification(user, json) {
         }
     });
     var $target = $('div#signalr-notifications');
-    //var data = JSON.parse(json);
     var data = json;
     var message =
         `NEW VEHICLE! <a href="/vehicles/${data.registration}">

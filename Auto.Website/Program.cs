@@ -24,6 +24,5 @@ namespace Auto.Website {
                     webBuilder.UseStartup<Startup>();
                 }
             );
-        
     }
 }

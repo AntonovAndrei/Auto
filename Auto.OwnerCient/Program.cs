@@ -39,7 +39,7 @@ internal class Program
         };
         var priceReply = await grpcClient.GetMatriculaAsync(ownerRequest);
         Console.WriteLine($"Owner {message.FullName} have {priceReply.VehicleNumber} vehicles");
-        var newVehiclePriceMessage = new NewOwnerMatriculaMessage(message, Int32.Parse(priceReply.VehicleNumber));
-        await bus.PubSub.PublishAsync(newVehiclePriceMessage);
+        var newOwnerMatriculaMessage = new NewOwnerMatriculaMessage(message, Int32.Parse(priceReply.VehicleNumber));
+        await bus.PubSub.PublishAsync(newOwnerMatriculaMessage);
     }
 }

@@ -13,7 +13,7 @@ function displayNotification(user, json) {
     });
     var $target = $('div#signalr-notifications');
     var data = json;
-    var message = `SiganlR message: ${data}`;
+    var message = `Vehicle count: ${data}`;
     var $div = $(`<div>${message}</div>`);
     $target.prepend($div);
     window.setTimeout(function () { $div.fadeOut(2000, function () { $div.remove(); }); }, 8000);

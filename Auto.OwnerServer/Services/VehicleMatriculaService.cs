@@ -20,6 +20,6 @@ public class VehicleMatriculaService : Matricula.MatriculaBase
     {
         _logger.LogInformation($"Start GetOwnerVehicle() method in OwnerVehicleService class {request.FullName} {request.BirthDate.ToDateTime()}");
         
-        return Task.FromResult(new OwnerReply() { VehicleNumber = "666" });
+        return Task.FromResult(new OwnerReply() { VehicleNumber = "3" });
     }
 }

@@ -33,6 +33,7 @@ namespace Auto.Notifier
             var csvRow =
                 $"{nodim.Id} : {nodim.FullName}, {nodim.BirthDate},{nodim.ListedAtUtc:d} -" +
                 $"{nodim.VehicleCount}";
+            Console.WriteLine("123");
             Console.WriteLine(csvRow);
             var json = JsonSerializer.Serialize(nodim, JsonSettings());
             await hub.SendAsync("NotifyWebUsers", "Auto.Notifier",
